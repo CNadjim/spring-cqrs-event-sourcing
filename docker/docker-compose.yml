@@ -1,0 +1,15 @@
+version: '3.7'
+
+services:
+  mongo-container:
+    image: mongo:4
+    restart: always
+    ports:
+      - "27017:27017"
+
+  axon-server:
+    image: axoniq/axonserver:latest
+    restart: always
+    ports:
+      - '8024:8024'
+      - '8124:8124'

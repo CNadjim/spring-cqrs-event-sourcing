@@ -1,0 +1,17 @@
+server:
+  port: 8080
+
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id: user-query-api
+          uri: http://localhost:8081/api/v1/user/**
+          predicates:
+            - Method=GET
+            - Path=/api/v1/user/**
+        - id: user-command-api
+          uri: http://localhost:8082/api/v1/user/**
+          predicates:
+            - Method=POST,PUT,DELETE
+            - Path=/api/v1/user/**
