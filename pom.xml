@@ -8,6 +8,10 @@
     <version>1.0.0</version>
     <name>spring-bank</name>
 
+    <properties>
+        <java.version>14</java.version>
+    </properties>
+
     <modules>
         <module>api.gateway</module>
         <module>user.core</module>
