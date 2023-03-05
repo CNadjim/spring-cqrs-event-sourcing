@@ -11,7 +11,7 @@
 	<groupId>com.springbank</groupId>
 	<artifactId>api</artifactId>
 	<version>1.0.0</version>
-	<name>user.cmd.api</name>
+	<name>user.command.api</name>
 	<description>User Command API Project</description>
 
 	<properties>

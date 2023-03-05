@@ -12,26 +12,26 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
-import java.util.Optional;
+import java.util.concurrent.CompletableFuture;
 
 @RestController
 @RequestMapping(path = "/api/v1/user")
 public class UserQueryController {
     private final QueryGateway queryGateway;
+
     public UserQueryController(final QueryGateway queryGateway) {
         this.queryGateway = queryGateway;
     }
 
     @GetMapping()
-    public List<User> getAllUsers() {
+    public CompletableFuture<List<User>> getAllUsers() {
         final FindAllUsersQuery query = new FindAllUsersQuery();
-        return queryGateway.query(query, ResponseTypes.multipleInstancesOf(User.class)).join();
+        return queryGateway.query(query, ResponseTypes.multipleInstancesOf(User.class));
     }
 
     @GetMapping(path = "/{id}")
-    public ResponseEntity<User> getUserById(@PathVariable(value = "id") String id) {
+    public CompletableFuture<ResponseEntity<User>> getUserById(@PathVariable(value = "id") String id) {
         final FindUserByIdQuery query = new FindUserByIdQuery(id);
-        final Optional<User> optionalUser = queryGateway.query(query, ResponseTypes.optionalInstanceOf(User.class)).join();
-        return ResponseEntity.of(optionalUser);
+        return queryGateway.query(query, ResponseTypes.optionalInstanceOf(User.class)).thenApplyAsync(ResponseEntity::of);
     }
 }
