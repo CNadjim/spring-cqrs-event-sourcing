@@ -10,7 +10,7 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 
-	<groupId>com.springbank</groupId>
+	<groupId>com.nadjim.cqrs</groupId>
 	<artifactId>user.query.api</artifactId>
 	<version>1.0.0</version>
 	<name>user.query.api</name>
@@ -56,7 +56,7 @@
 		</dependency>
 
 		<dependency>
-			<groupId>com.springbank</groupId>
+			<groupId>com.nadjim.cqrs</groupId>
 			<artifactId>user.core</artifactId>
 			<version>1.0.0</version>
 		</dependency>

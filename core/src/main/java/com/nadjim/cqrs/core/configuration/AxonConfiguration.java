@@ -1,4 +1,4 @@
-package com.springbank.user.core.configuration;
+package com.nadjim.cqrs.core.configuration;
 
 import com.mongodb.client.MongoClient;
 import org.axonframework.eventsourcing.eventstore.EmbeddedEventStore;

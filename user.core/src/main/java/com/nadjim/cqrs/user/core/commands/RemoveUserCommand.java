@@ -1,5 +1,6 @@
-package com.springbank.user.core.commands;
+package com.nadjim.cqrs.user.core.commands;
 
+import com.nadjim.cqrs.core.models.BaseCommand;
 import lombok.*;
 
 @Getter

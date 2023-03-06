@@ -1,6 +1,7 @@
-package com.springbank.user.core.events;
+package com.nadjim.cqrs.user.core.events;
 
-import com.springbank.user.core.models.User;
+import com.nadjim.cqrs.core.models.BaseEvent;
+import com.nadjim.cqrs.user.core.models.User;
 import lombok.Getter;
 import lombok.Setter;
 

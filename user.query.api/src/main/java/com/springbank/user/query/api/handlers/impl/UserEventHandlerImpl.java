@@ -1,8 +1,8 @@
 package com.springbank.user.query.api.handlers.impl;
 
-import com.springbank.user.core.events.UserRegisteredEvent;
-import com.springbank.user.core.events.UserRemovedEvent;
-import com.springbank.user.core.events.UserUpdatedEvent;
+import com.nadjim.cqrs.user.core.events.UserRegisteredEvent;
+import com.nadjim.cqrs.user.core.events.UserRemovedEvent;
+import com.nadjim.cqrs.user.core.events.UserUpdatedEvent;
 import com.springbank.user.query.api.handlers.UserEventHandler;
 import com.springbank.user.query.api.repositories.UserRepository;
 import org.axonframework.config.ProcessingGroup;

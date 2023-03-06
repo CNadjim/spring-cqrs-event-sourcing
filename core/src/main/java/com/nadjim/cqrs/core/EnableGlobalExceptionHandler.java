@@ -1,7 +1,6 @@
 package com.nadjim.cqrs.core;
 
-
-import com.nadjim.cqrs.core.configuration.MongoConfiguration;
+import com.nadjim.cqrs.core.configuration.GlobalExceptionHandler;
 import org.springframework.context.annotation.Import;
 
 import java.lang.annotation.ElementType;
@@ -12,7 +11,7 @@ import java.lang.annotation.Target;
 @Retention(value = RetentionPolicy.RUNTIME)
 @Target(value = ElementType.TYPE)
 @Import({
-        MongoConfiguration.class
+        GlobalExceptionHandler.class
 })
-public @interface MongoMicroservice {
+public @interface EnableGlobalExceptionHandler {
 }

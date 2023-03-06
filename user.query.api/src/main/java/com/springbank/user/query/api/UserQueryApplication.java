@@ -1,13 +1,15 @@
 package com.springbank.user.query.api;
 
-import com.springbank.user.core.AxonMicroservice;
-import com.springbank.user.core.MongoMicroservice;
-import com.springbank.user.core.SwaggerMicroservice;
+import com.nadjim.cqrs.core.AxonMicroservice;
+import com.nadjim.cqrs.core.EnableCors;
+import com.nadjim.cqrs.core.MongoMicroservice;
+import com.nadjim.cqrs.core.SwaggerMicroservice;
 import io.swagger.v3.oas.annotations.OpenAPIDefinition;
 import io.swagger.v3.oas.annotations.info.Info;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+@EnableCors
 @AxonMicroservice
 @MongoMicroservice
 @SwaggerMicroservice

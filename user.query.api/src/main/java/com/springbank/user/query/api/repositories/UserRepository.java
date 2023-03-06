@@ -1,6 +1,6 @@
 package com.springbank.user.query.api.repositories;
 
-import com.springbank.user.core.models.User;
+import com.nadjim.cqrs.user.core.models.User;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.data.mongodb.repository.Query;
 

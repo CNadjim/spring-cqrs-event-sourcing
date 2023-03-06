@@ -1,8 +1,8 @@
 package com.springbank.user.query.api.handlers;
 
-import com.springbank.user.core.events.UserRegisteredEvent;
-import com.springbank.user.core.events.UserRemovedEvent;
-import com.springbank.user.core.events.UserUpdatedEvent;
+import com.nadjim.cqrs.user.core.events.UserRegisteredEvent;
+import com.nadjim.cqrs.user.core.events.UserRemovedEvent;
+import com.nadjim.cqrs.user.core.events.UserUpdatedEvent;
 
 public interface UserEventHandler {
     void on(UserRegisteredEvent event);

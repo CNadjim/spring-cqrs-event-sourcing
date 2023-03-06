@@ -1,12 +1,12 @@
-package com.springbank.user.command.api.aggregates;
+package com.nadjim.cqrs.user.command.api.aggregates;
 
-import com.springbank.user.core.commands.RegisterUserCommand;
-import com.springbank.user.core.commands.RemoveUserCommand;
-import com.springbank.user.core.commands.UpdateUserCommand;
-import com.springbank.user.core.events.UserRegisteredEvent;
-import com.springbank.user.core.events.UserRemovedEvent;
-import com.springbank.user.core.events.UserUpdatedEvent;
-import com.springbank.user.core.models.User;
+import com.nadjim.cqrs.user.core.commands.RegisterUserCommand;
+import com.nadjim.cqrs.user.core.commands.RemoveUserCommand;
+import com.nadjim.cqrs.user.core.commands.UpdateUserCommand;
+import com.nadjim.cqrs.user.core.events.UserRegisteredEvent;
+import com.nadjim.cqrs.user.core.events.UserRemovedEvent;
+import com.nadjim.cqrs.user.core.events.UserUpdatedEvent;
+import com.nadjim.cqrs.user.core.models.User;
 import org.axonframework.commandhandling.CommandHandler;
 import org.axonframework.eventsourcing.EventSourcingHandler;
 import org.axonframework.modelling.command.AggregateIdentifier;

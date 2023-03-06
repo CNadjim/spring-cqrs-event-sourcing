@@ -1,6 +1,6 @@
-package com.springbank.user.core;
+package com.nadjim.cqrs.core;
 
-import com.springbank.user.core.configuration.AxonConfiguration;
+import com.nadjim.cqrs.core.configuration.AxonConfiguration;
 import org.springframework.context.annotation.Import;
 
 import java.lang.annotation.ElementType;

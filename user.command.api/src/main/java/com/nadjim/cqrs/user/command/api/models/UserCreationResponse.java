@@ -1,4 +1,4 @@
-package com.nadjim.cqrs.user.command.api.dto;
+package com.nadjim.cqrs.user.command.api.models;
 
 import lombok.Getter;
 import lombok.Setter;

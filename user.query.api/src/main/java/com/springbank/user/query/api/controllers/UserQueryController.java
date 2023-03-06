@@ -1,6 +1,6 @@
 package com.springbank.user.query.api.controllers;
 
-import com.springbank.user.core.models.User;
+import com.nadjim.cqrs.user.core.models.User;
 import com.springbank.user.query.api.queries.FindAllUsersQuery;
 import com.springbank.user.query.api.queries.FindUserByIdQuery;
 import org.axonframework.messaging.responsetypes.ResponseTypes;

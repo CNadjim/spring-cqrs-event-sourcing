@@ -1,6 +1,6 @@
 package com.springbank.user.query.api.handlers.impl;
 
-import com.springbank.user.core.models.User;
+import com.nadjim.cqrs.user.core.models.User;
 import com.springbank.user.query.api.handlers.UserQueryHandler;
 import com.springbank.user.query.api.queries.FindAllUsersQuery;
 import com.springbank.user.query.api.queries.FindUserByIdQuery;
@@ -15,21 +15,19 @@ import java.util.Optional;
 @Service
 public class UserQueryHandlerImpl implements UserQueryHandler {
     private final UserRepository userRepository;
-
-    @Autowired
-    public UserQueryHandlerImpl(UserRepository userRepository) {
+    public UserQueryHandlerImpl(final UserRepository userRepository) {
         this.userRepository = userRepository;
     }
 
     @Override
     @QueryHandler
-    public Optional<User> findById(FindUserByIdQuery query) {
+    public Optional<User> findById(final FindUserByIdQuery query) {
         return userRepository.findById(query.getId());
     }
 
     @Override
     @QueryHandler
-    public List<User> findAll(FindAllUsersQuery query) {
+    public List<User> findAll(final FindAllUsersQuery query) {
         return userRepository.findAll();
     }
 }
