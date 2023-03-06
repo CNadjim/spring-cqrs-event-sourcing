@@ -1,0 +1,14 @@
+package com.springbank.user.core.commands;
+
+import com.springbank.user.core.models.User;
+import lombok.*;
+
+@Getter
+@Setter
+public class RegisterUserCommand extends BaseCommand {
+    private final User user;
+    public RegisterUserCommand(User user){
+        super(user.getId());
+        this.user = user;
+    }
+}

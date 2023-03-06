@@ -1,17 +1,40 @@
 server:
   port: 8080
 
+springdoc:
+  swagger-ui:
+    urls:
+      - name: user-query
+        url: /v3/api-docs/user-query
+      - name: user-command
+        url: /v3/api-docs/user-command
+
 spring:
   cloud:
     gateway:
+      globalcors:
+        corsConfigurations:
+          '[/**]':
+            allowed-origins: '*'
+            allowed-methods: '*'
+            allowed-headers: '*'
+            allow-credentials: true
       routes:
         - id: user-query-api
-          uri: http://localhost:8081/api/v1/user/**
+          uri: http://localhost:8081
+          filters:
+            - StripPrefix=2
           predicates:
-            - Method=GET
-            - Path=/api/v1/user/**
+            - Path=/api/user-query/**
         - id: user-command-api
-          uri: http://localhost:8082/api/v1/user/**
+          uri: http://localhost:8082
+          filters:
+            - StripPrefix=2
           predicates:
-            - Method=POST,PUT,DELETE
-            - Path=/api/v1/user/**
+            - Path=/api/user-command/**
+        - id: open-api
+          uri: http://localhost:${server.port}
+          predicates:
+            - Path=/v3/api-docs/**
+          filters:
+            - RewritePath=/v3/api-docs/(?<path>.*), /api/$\{path}/v3/api-docs
