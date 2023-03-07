@@ -1,17 +1,23 @@
 package com.nadjim.cqrs.user.core.events;
 
 import com.nadjim.cqrs.core.models.BaseEvent;
-import com.nadjim.cqrs.user.core.models.User;
+import com.nadjim.cqrs.user.core.commands.UpdateUserCommand;
 import lombok.Getter;
 import lombok.Setter;
+
+import java.util.Optional;
 
 @Getter
 @Setter
 public class UserUpdatedEvent extends BaseEvent {
-    private User user;
+    private final String firstname;
+    private final String lastname;
+    private final Boolean active;
 
-    public UserUpdatedEvent(final User user){
-        super(user.getId());
-        this.user = user;
+    public UserUpdatedEvent(final UpdateUserCommand command){
+        super(command.getAggregateIdentifier());
+        this.firstname = command.getFirstname();
+        this.lastname = command.getLastname();
+        this.active = command.getActive();
     }
 }

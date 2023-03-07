@@ -1,7 +1,8 @@
 package com.nadjim.cqrs.user.command.api.controllers;
 
+import com.nadjim.cqrs.user.command.api.models.UserCreationRequest;
 import com.nadjim.cqrs.user.command.api.models.UserCreationResponse;
-import com.nadjim.cqrs.user.command.api.models.UserRequest;
+import com.nadjim.cqrs.user.command.api.models.UserUpdateRequest;
 import com.nadjim.cqrs.user.core.commands.RegisterUserCommand;
 import com.nadjim.cqrs.user.core.commands.RemoveUserCommand;
 import com.nadjim.cqrs.user.core.commands.UpdateUserCommand;
@@ -25,32 +26,32 @@ public class UserCommandController {
     }
 
     @PostMapping
-    public CompletableFuture<UserCreationResponse> createUser(@Valid @RequestBody UserRequest request) {
-        final User user = User.builder()
-                .id(UUID.randomUUID().toString())
-                .firstname(request.getFirstname())
-                .lastname(request.getLastname())
+    public CompletableFuture<UserCreationResponse> createUser(@Valid @RequestBody UserCreationRequest request) {
+        final RegisterUserCommand command = RegisterUserCommand.builder()
+                .aggregateIdentifier(UUID.randomUUID().toString())
                 .emailAddress(request.getEmailAddress())
+                .lastname(request.getLastname())
+                .firstname(request.getFirstname())
                 .build();
-        final RegisterUserCommand command = new RegisterUserCommand(user);
         return this.commandGateway.send(command).thenApplyAsync(UserCreationResponse::new);
     }
 
     @PutMapping(path = "/{userId}")
-    public CompletableFuture<Object> updateUser(@PathVariable(value = "userId") String userId, @Valid @RequestBody UserRequest request) {
-        final User user = User.builder()
-                .id(userId)
-                .firstname(request.getFirstname())
+    public CompletableFuture<Object> updateUser(@PathVariable(value = "userId") String userId, @RequestBody UserUpdateRequest request) {
+        final UpdateUserCommand command = UpdateUserCommand.builder()
+                .aggregateIdentifier(userId)
                 .lastname(request.getLastname())
-                .emailAddress(request.getEmailAddress())
+                .firstname(request.getFirstname())
+                .active(request.getActive())
                 .build();
-        final UpdateUserCommand command = new UpdateUserCommand(user);
         return this.commandGateway.send(command);
     }
 
     @DeleteMapping(path = "/{userId}")
     public CompletableFuture<Object> deleteUser(@PathVariable(value = "userId") String userId) {
-        final RemoveUserCommand command = new RemoveUserCommand(userId);
+        final RemoveUserCommand command = RemoveUserCommand.builder()
+                .aggregateIdentifier(userId)
+                .build();
         return this.commandGateway.send(command);
     }
 

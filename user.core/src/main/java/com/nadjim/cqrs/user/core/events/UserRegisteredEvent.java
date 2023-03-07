@@ -1,17 +1,22 @@
 package com.nadjim.cqrs.user.core.events;
 
 import com.nadjim.cqrs.core.models.BaseEvent;
-import com.nadjim.cqrs.user.core.models.User;
-import lombok.*;
+import com.nadjim.cqrs.user.core.commands.RegisterUserCommand;
+import lombok.Getter;
+import lombok.Setter;
 
 
 @Getter
 @Setter
 public class UserRegisteredEvent extends BaseEvent {
-    private User user;
+    private final String firstname;
+    private final String lastname;
+    private final String emailAddress;
 
-    public UserRegisteredEvent(final User user){
-        super(user.getId());
-        this.user = user;
+    public UserRegisteredEvent(final RegisterUserCommand command){
+        super(command.getAggregateIdentifier());
+        this.firstname = command.getFirstname();
+        this.lastname = command.getLastname();
+        this.emailAddress = command.getEmailAddress();
     }
 }

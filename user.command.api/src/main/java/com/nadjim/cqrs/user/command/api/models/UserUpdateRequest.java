@@ -1,23 +1,23 @@
 package com.nadjim.cqrs.user.command.api.models;
 
+import com.nadjim.cqrs.core.validators.NullOrNotBlank;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
+import java.util.Optional;
 
 
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class UserRequest {
-    @NotBlank(message = "Firstname is mandatory.")
+public class UserUpdateRequest {
+    @NullOrNotBlank
     private String firstname;
-    @NotBlank(message = "Lastname is mandatory.")
+    @NullOrNotBlank
     private String lastname;
-    @Email(message = "Please provide a valid email address.")
-    private String emailAddress;
+    private Boolean active;
 }

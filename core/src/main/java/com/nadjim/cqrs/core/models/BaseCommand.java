@@ -1,16 +1,15 @@
 package com.nadjim.cqrs.core.models;
 
-import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.experimental.SuperBuilder;
 import org.axonframework.modelling.command.TargetAggregateIdentifier;
 
 @Getter
 @Setter
-@NoArgsConstructor
-@AllArgsConstructor
-public class BaseCommand {
+@SuperBuilder
+public abstract class BaseCommand {
     @TargetAggregateIdentifier
-    private String id;
+    private final String aggregateIdentifier;
+
 }

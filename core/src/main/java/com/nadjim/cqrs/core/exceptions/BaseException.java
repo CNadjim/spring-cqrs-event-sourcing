@@ -13,8 +13,8 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @NoArgsConstructor
 public class BaseException {
-  private Integer code;
   private String status;
+  private Integer code;
   private String message;
   private String date;
   private Object details;

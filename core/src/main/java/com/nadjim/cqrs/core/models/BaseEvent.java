@@ -1,14 +1,14 @@
 package com.nadjim.cqrs.core.models;
 
-import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Getter
 @Setter
-@NoArgsConstructor
-@AllArgsConstructor
-public class BaseEvent {
-    private String id;
+public abstract class BaseEvent {
+    private final String aggregateIdentifier;
+
+    public BaseEvent(final String aggregateIdentifier){
+        this.aggregateIdentifier = aggregateIdentifier;
+    }
 }
