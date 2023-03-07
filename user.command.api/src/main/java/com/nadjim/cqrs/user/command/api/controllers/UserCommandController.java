@@ -37,7 +37,7 @@ public class UserCommandController {
     }
 
     @PutMapping(path = "/{userId}")
-    public CompletableFuture<Object> updateUser(@PathVariable(value = "userId") String userId, @RequestBody UserUpdateRequest request) {
+    public CompletableFuture<Object> updateUser(@PathVariable(value = "userId") String userId, @Valid @RequestBody UserUpdateRequest request) {
         final UpdateUserCommand command = UpdateUserCommand.builder()
                 .aggregateIdentifier(userId)
                 .lastname(request.getLastname())
